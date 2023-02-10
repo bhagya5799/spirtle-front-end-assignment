@@ -243,9 +243,12 @@ const Home = () => {
       
       <div className='input-output-container'>
         {status === 'true' ? (<div>{resultData.map(each => (
-          <ol className='result-card'>
-            <p className='master-name'>{each.masterName}</p>
-            <p className='heading'>{each.question}<i onClick={clickdelete}><AiFillDelete /></i></p>
+          <ol className='questions'>
+            <li className='li-container' >
+              <p className='master-name'>{each.masterName}</p>
+              <p className='heading'>{each.question}<i onClick={clickdelete}><AiFillDelete /></i></p>
+            </li>
+          
           </ol>
         ))} 
         </div>) : (<div className='box'>{resultData.map(each => (

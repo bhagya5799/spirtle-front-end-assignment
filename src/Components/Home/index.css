@@ -14,9 +14,7 @@
   height: 100px;
   background-color: white;
 }
-.result-card {
-  background-color: rgb(216, 30, 30);
-}
+
 .select-input-box {
   display: flex;
   flex-wrap: wrap;
