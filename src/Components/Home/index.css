@@ -1,0 +1,91 @@
+.home-container {
+
+}
+.input-output-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%; 
+}
+
+.result-container {
+  height: 100px;
+  background-color: white;
+}
+.result-card {
+  background-color: rgb(216, 30, 30);
+}
+.select-input-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 15px;
+  position: fixed;
+  bottom: 0;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 -5px 5px -5px #333;
+}
+.select-btn {
+  background-color: rgb(9, 9, 9);
+  width: 10rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: white;
+}
+.click-btn {
+  border-color: yellow;
+  height: 2rem;
+  width: 10rem;
+  border-width: 0;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.click-btn:hover {
+  background-color: rgb(169, 166, 234);
+}
+.questions {
+ margin-top: 50px;
+}
+.li-container {
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+  border: 1px solid rgb(255, 249, 249);
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: rgba(21, 21, 229, 0.25) 0px 50px 100px -20px,
+    rgba(207, 201, 201, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding: 10px;
+  align-items: center;
+  border-radius: 10px;
+}
+.para {
+  margin-top: 20p;
+}
+
+.box {
+  width: 40%;
+
+}
+.heading{
+    color: rgb(216, 35, 74);
+    font-size: 18px;
+    
+}
+.master-name{
+    color: rgb(76, 30, 203);
+    font-weight: bold;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 12px;
+}
+.header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-bottom: 20px;
+}

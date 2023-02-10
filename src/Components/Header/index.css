@@ -1,0 +1,58 @@
+.nav-container {
+  background-color: rgb(204, 234, 238);
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+ 
+}
+.logo {
+  color: rgb(36, 152, 201);
+  font-family: serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 5px;
+}
+.it {
+  color: rgb(32, 194, 40);
+}
+.master-logout-button {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.logout-btn {
+  height: 2rem;
+  width: 5rem;
+  background-color: rgb(202, 23, 23);
+  color: white;
+  border-radius: 3px;
+ border-width: 0;
+ font-size: 14px;
+}
+.master {
+ font-size: 15px;
+border-radius: 10px;
+border-width: 0px;
+background-color: rgb(168, 206, 203);
+
+}
+.master:hover{
+    background-color: rgb(27, 187, 184);
+    color: blue;
+}
+.tick{
+  color: green;
+}
+.s-logo{
+  font-size: 30px;
+  /* color: red; */
+  text-align: center;
+  padding-left: 5px;
+}

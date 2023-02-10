@@ -1,20 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home'
+import { Switch, Route} from 'react-router-dom'
+import ProtectRoute from './Components/ProtectRoute'
 import Login from './Components/Login'
-import './App.css';
+import Home from './Components/Home'
+import './App.css'
+import Register from './Components/Register'
+import MasterData from './Components/MaserData'
+import StudentData from './Components/StudentData'
+const App = () => (
+  <>
+    <Switch>
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/register/:status' component={Register} />
+      <Route exact path='/master' component={MasterData} />
+      <Route exact path='/student' component={StudentData} />
+      <ProtectRoute exact path='/' component={Home} />
+    </Switch>
+  </>
+)
 
-function App() {
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/login" element={<Login />}>
-          </Route>
-          <Route exact path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
-}
-
-export default App;
+export default App

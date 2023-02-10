@@ -1,0 +1,38 @@
+.account-main-container{
+    background-color: rgb(19, 19, 141);
+    color: white;
+}
+.account-sub-container{
+    background-color: rgb(19, 19, 19);
+    
+
+
+}
+.heading-account{
+    color: white;
+    margin-top: 30px;
+}
+@media screen and (min-width: 600px) {
+  .account-sub-container {
+    width: 300px;
+    height: 300px;
+
+  }
+  .account-sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+   
+  }
+}
+@media screen and (min-width: 768px) {
+  .account-sub-container {
+    width: 250px;
+    height: 250px;
+  }
+   .account-sub-container {
+    display: flex;
+    flex-wrap: wrap;
+   
+  }
+}

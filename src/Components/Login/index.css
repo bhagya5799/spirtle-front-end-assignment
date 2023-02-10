@@ -1,61 +1,97 @@
-.login-container{
+.login-container {
   display: flex;
-justify-content: center;
-padding: 5rem;
-
-
-
-
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem;
+  background-color: black;
+  height: 100vh;
+ 
 }
-.Page-container{
-    height: 440px;
-    width: 400px;
-    background-color: rgb(30, 29, 28);
-    display: flex;
-    justify-content: center; 
-    color: white;
-    padding-top: 3rem;
-    border-radius: 10px;
-    
+.Page-container {
+  height: 440px;
+  width: 400px;
+  background-color: rgb(30, 29, 28);
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding-top: 3rem;
+  border-radius: 10px;
 }
-.loginPage-title{
-    color: white;
-    text-align: center;
+.loginPage-title {
+  color: white;
+  text-align: center;
 }
-form{
+form {
+  display: flex;
+  flex-direction: column;
+}
+.input-card {
+  width: 100%;
+  height: 2rem;
+  border-radius: 10px;
+  /* background-color: white; */
+  position: relative;
+}
+input {
+  width: 100%;
+  height: 2rem;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 15px;
+  outline: none;
+}
+.icons {
+  color: rgb(25, 24, 24);
+  position: absolute;
+  font-size: 20px;
+  text-align: center;
+  top: 3px;
+  right: 0;
+  transform: rotateX("50%");
+  margin-right: 10px;
+  margin-left: 4px;
+}
+.error-message {
+  color: red;
+  text-align: center;
+}
+.choose-master-student-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-btn {
+  text-align: center;
+  border-radius: 10px;
+  height: 2.5rem;
+  background-color: green;
+  color: white;
+  border-width: 0;
+}
+.link {
+  text-decoration: none;
+}
+.user {
+  height: 2.3rem;
+  width: 10rem;
+  background-color: blue;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+}
+.wellcome {
+  color: rgb(207, 43, 43);
+  font-style: italic;
+  font-family: cursive;
+}
+.choose-master-student{
     display: flex;
     flex-direction: column;
-}
-.input-card{
+    align-items: center;
+    gap: 40px;height: 100%;
     width: 100%;
-    height: 2rem;
-    border-radius: 10px;
-    background-color: white;
-    position: relative;
-
-}
-input{
-    width: 22rem;
-    height: 2rem;
-    outline: none;
-    padding-left: 10px;
-    padding-right: 15px;
-    outline: none;
-
-   
-}
-.icons{
-    color: rgb(25, 24, 24);
-    position: absolute;
-    font-size: 20px;
-    text-align: center;
-    top: 3px;
-    right: 0;
-    transform: rotateX('50%');
-    margin-right: 10px;
-    margin-left: 4px;
-}
-.error-message{
-color: red;
-text-align: center;
+    padding: 10px;
+    /* background-image: linear-gradient(rgb(232, 223, 223) ,rgb(196, 184, 193),white); */
+    background-size: cover;
 }
