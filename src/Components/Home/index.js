@@ -74,7 +74,7 @@ const Home = () => {
   const [operator, setOperator] = useState([chooseOperator[0].id])
   const [secondNbr, setsecondNbr] = useState([chooseNumber[0].id])
   const [resultData, setResultData] = useState([])
-  const [qnData, setQnData] = useState([])
+
 
   const status = localStorage.getItem("status")
 
