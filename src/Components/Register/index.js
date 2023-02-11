@@ -11,13 +11,13 @@ const Register = (props) => {
   const { match } = props
   const { params } = match
   const { status } = params
-  const studentOrMaster = status === 'true' ? "Master" : "Student"
+
 
   const submitForm = async (event) => {
     event.preventDefault()
     const student_api = 'https://registrationapi-z2hj.onrender.com/'
     const master_api = 'https://registrationapi-z2hj.onrender.com/admin'
-    const url = status === 'true' ? master_api : student_api
+    const url = status === 'true' ? student_api : master_api
 
     const userDetails = {
       id: uuidv4(),
@@ -34,10 +34,17 @@ const Register = (props) => {
       },
     }
     const response = await fetch(url, options)
-    const data = await response.json()
+
     if (response.ok === true) {
-      const { history } = props
-      history.replace('/login')
+      if (status === 'true'){
+        const { history } = props
+        history.replace('/login')
+      }
+      else{
+        const { history } = props
+        history.replace('/masterlogin')
+      }
+   
     }
     else {
       setErrMessage('User Not register')
@@ -45,6 +52,7 @@ const Register = (props) => {
     }
   }
   
+  console.log(typeof(status))
   return (
     <div className='Register-form-container'>
       <form autoComplete="off" onSubmit={submitForm} className="r-form">
@@ -64,7 +72,7 @@ const Register = (props) => {
           <p className='icons'></p>
         </div>&nbsp; <br /> <br />
         <button type='submit' className='login-btn'>Register</button>
-        {setToggle && <p className='error-message'>{errorMessage}</p>}
+        {toggle && <p className='error-message'>{errorMessage}</p>}
       </form>
     </div>
   )

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Header from '../Header'
 import './index.css'
 
-const Account = () => {
+const StudentData = () => {
+    const status = localStorage.getItem('status')
     const [studentData, setStudentData] = useState([])
     const [password, setPassword] = useState('')
+    const getName = status ==='false'? 'student': 'Master'
     const getStudentData = async () => {
-        const id = localStorage.getItem("id")
         const url = `https://registrationapi-z2hj.onrender.com`
         const option = {
             method: "GET",
@@ -23,7 +24,7 @@ const Account = () => {
         setStudentData(data)
     }
     const getMasterData = async () => {
-        const id = localStorage.getItem("id")
+     
         const url = `https://registrationapi-z2hj.onrender.com/all-admins`
         const option = {
             method: "GET",
@@ -41,9 +42,6 @@ const Account = () => {
         status === 'true' ? getMasterData() : getStudentData()
     }, []);
   
-    const status = localStorage.getItem("status")
-    const StudentOrMaster = status === 'true' ? 'Master' : 'Student'
-
     return (<div className='account-main-container'>
         <div className='heade'>
             <Header />
@@ -53,7 +51,7 @@ const Account = () => {
             <ol className='master-data-card'>
                 {studentData.map(each => (
                     <li className='account-sub-container'>
-                        <p className='para'>Master Name-: {each.name}</p>
+                        <p className='para'>{getName} Name-: {each.name}</p>
                         <p className='para'>Contact-: {each.email} </p>
                     </li>
                 ))}
@@ -62,4 +60,4 @@ const Account = () => {
     </div>
     )
 }
-export default Account
+export default StudentData

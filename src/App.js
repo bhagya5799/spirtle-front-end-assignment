@@ -6,6 +6,7 @@ import './App.css'
 import Register from './Components/Register'
 import MasterData from './Components/MaserData'
 import StudentData from './Components/StudentData'
+import MasterLogin from './Components/MasterLogin'
 const App = () => (
   <>
     <Switch>
@@ -13,6 +14,7 @@ const App = () => (
       <Route exact path='/register/:status' component={Register} />
       <Route exact path='/master' component={MasterData} />
       <Route exact path='/student' component={StudentData} />
+      <Route exact path='/masterlogin' component={MasterLogin} />
       <ProtectRoute exact path='/' component={Home} />
     </Switch>
   </>

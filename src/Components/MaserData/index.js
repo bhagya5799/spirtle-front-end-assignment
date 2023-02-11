@@ -5,13 +5,18 @@ import './index.css'
 const Account = () => {
     const [userData, setUserData] = useState([])
     const [password, setPassword] = useState('')
+
     useEffect(() => {
         const status = localStorage.getItem("status")
         status === 'true' ? getStudentData() : getMasterData()
 
     }, []);
+
+    const status = localStorage.getItem('status')
+    const getName = status === 'true'? 'Student' : 'Master' 
     const getStudentData = async () => {
         const id = localStorage.getItem("id")
+ 
         const url = `https://registrationapi-z2hj.onrender.com/getOneData/${id}`
         const option = {
             method: "GET",
@@ -46,8 +51,7 @@ const Account = () => {
         setPassword(hide)
         setUserData(data[0])
     }
-    const status = localStorage.getItem("status")
-    const StudentOrMaster = status === 'true' ? 'Master' : 'Student'
+
 
     return (<div className='account-main-container'>
         <div className='nav-bar'>
@@ -56,7 +60,7 @@ const Account = () => {
         <div className='master-card'>
             <ol className='master-data-card'>
                 <li className='account-sub-container'>
-                    <p className='para'>Master Name-: {userData.name}</p>
+                    <p className='para'>{getName} Name-: {userData.name}</p>
                     <p className='para'>Contact-: {userData.email} </p>
                     <p className='para-x'>Password-: {password}</p>
                 </li>

@@ -9,11 +9,11 @@ const Login = (props) => {
     const [userPass, setPassword] = useState('')
     const [errorMessage, setErrMessage] = useState('')
 
-
     const submitForm = async (e) => {
         console.log('ok')
         e.preventDefault()
-        const userApi = 'https://registrationapi-z2hj.onrender.com/login'
+        const masterApi = 'https://registrationapi-z2hj.onrender.com/adminLogin'
+
         const userDetails = {
             email: email,
             password: userPass,
@@ -26,11 +26,14 @@ const Login = (props) => {
                 accept: 'application/json',
             },
         }
-        const response = await fetch(userApi, options)
+        const response = await fetch(masterApi, options)
         const data = await response.json()
+
+        console.log(response)
         if (data.status === true) {
+            console.log(data, 'dat')
             setErrMessage('')
-            localStorage.setItem("status", true)
+            localStorage.setItem("status", false,)
             localStorage.setItem("id", data.id)
             history.replace("/")
         }
@@ -39,17 +42,17 @@ const Login = (props) => {
         }
 
     }
+
     const getId = localStorage.getItem("id")
     if (getId !== null) {
         return <Redirect to="/" />
     }
-    
     return (
         <div className='login-container'>
-           <div className='choose-master-student'>
+          <div className='choose-master-student'>
                 <div className='Page-container'>
                     <form autoComplete="off" onSubmit={submitForm}>
-                        <h4 className='loginPage-title'>Student Login</h4>
+                        <h4 className='loginPage-title'>Master Login</h4>
                         <label htmlFor='email'>Email</label>
                         <div className='input-card'>
                             <input id='email' type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
@@ -62,16 +65,15 @@ const Login = (props) => {
                         </div>&nbsp; <br /> <br />
                         <button type='submit' className='login-btn'>Login</button>
                         <p className='error-message'>{errorMessage}</p>
-                        <Link to={`/register/${true}`} >
+                        <Link to={`/register/${false}`} >
                             <p>Don't have Account </p>
                         </Link>
-                        <Link to="/masterlogin">
-                            <p>Not a Student? Login as a Master</p>
+                        <Link to="/login">
+                            <p >Not a Master? Login as a Student</p>
                         </Link>
                     </form>
                 </div>
             </div>
-            
         </div>
     )
 }
