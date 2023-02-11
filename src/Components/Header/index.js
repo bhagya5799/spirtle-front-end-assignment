@@ -1,5 +1,4 @@
 import { withRouter, Link } from 'react-router-dom'
-import { FiDatabase } from 'react-icons/fi'
 import { HiUserGroup } from 'react-icons/hi'
 import { BiCheckDouble } from 'react-icons/bi'
 import { GiDoubleRingedOrb } from 'react-icons/gi'
@@ -25,12 +24,6 @@ const Header = (props) => {
                   </Link>
               </div>
               <div className='master-logout-button'>
-               
-                  {/* {status === 'true'  ? <Link to="/student">
-                      <button className='master'><i className='tick'>student<HiUserGroup /> <BiCheckDouble /></i></button>
-                  </Link> : <Link to="/master">
-                      <button className='master'><i >Master <FiDatabase /></i></button>
-                  </Link>} */}
                   <Link to="/student">
                       <button className='master'><i className='tick'>{toggleAll}<HiUserGroup /> <BiCheckDouble /></i></button>
                   </Link> 
