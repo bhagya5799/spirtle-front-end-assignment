@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Header'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
-import { AiFillDelete } from 'react-icons/ai'
+import DeleteQuestion from '../DeleteQuestion'
 import { v4 as uuidv4 } from 'uuid'
 
 import './index.css'
-
-
 
 
 const chooseNumber = [
@@ -76,15 +74,12 @@ const Home = () => {
   const [operator, setOperator] = useState([chooseOperator[0].id])
   const [secondNbr, setsecondNbr] = useState([chooseNumber[0].id])
   const [resultData, setResultData] = useState([])
-  const [qnData,setQnData]=useState([])
+  const [qnData, setQnData] = useState([])
 
   const status = localStorage.getItem("status")
 
   const checkMasterStudentData = () => {
-
     status === 'true' ? studentView() : masterView()
-
-
   }
   useEffect(() => {
     checkMasterStudentData()
@@ -114,7 +109,7 @@ const Home = () => {
         accept: 'application/json',
       },
     }
-    const response = await fetch(`https://registrationapi-z2hj.onrender.com/getMaster-question/6239e959-5741-4b6b-99c5-faa55d730e99`, options)
+    const response = await fetch(`https://registrationapi-z2hj.onrender.com/getMaster-question/${id}`, options)
     const data = await response.json()
     setResultData(data)
 
@@ -139,16 +134,13 @@ const Home = () => {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    
-    if (response.ok=== true){
+
+    if (response.ok === true) {
       setfirstNbr(chooseNumber[0].id)
       setOperator(chooseOperator[0].id)
       setsecondNbr(chooseNumber[0].id)
-      masterView()
+      checkMasterStudentData()
     }
- 
- 
-    
   }
   const ClickButton = async () => {
     function checkNum(num, temp) {
@@ -158,8 +150,6 @@ const Home = () => {
         return temp(num)
       }
     }
-
-
     function zero(temp) {
       return checkNum(0, temp)
     }
@@ -231,37 +221,52 @@ const Home = () => {
     }
   }
 
-  const clickdelete = () => {
-    console.log('ok', resultData)
-    
+  const onDeleteButton = async (id) => {
+    const url = `https://registrationapi-z2hj.onrender.com/delete-question/${id}`
+    const options = {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (response.ok === true) {
+      checkMasterStudentData()
+    }
   }
   return (
     <div className='home-container'>
       <div className='header'>
         <Header />
       </div>
-      
+
       <div className='input-output-container'>
-        {status === 'true' ? (<div>{resultData.map(each => (
-          <ol className='questions'>
-            <li className='li-container' >
-              <p className='master-name'>{each.masterName}</p>
-              <p className='heading'>{each.question}<i onClick={clickdelete}><AiFillDelete /></i></p>
-            </li>
-          
-          </ol>
-        ))} 
-        </div>) : (<div className='box'>{resultData.map(each => (
+        {status === 'true' ? (<div className='box'>
           <ol className="questions">
             {resultData.map(eachData => (
               <li className='li-container' key={eachData.id}>
                 <p className='heading'>{eachData.question}</p>
                 <p className='master-name'>Send By-:{eachData.masterName}  </p>
-                
+
               </li>
             ))}
           </ol>
-        ))}  
+        </div>) : (<div className='box'>
+          <ol className="questions">
+            {resultData.map(eachData => (
+              <li className='li-container' key={eachData.id}>
+                <div className='cad'>
+                  <p className='heading'>{eachData.question}</p>
+                  <p className='master-name'>Send By-:{eachData.masterName}  </p>
+                </div>
+                <DeleteQuestion onDeleteButton={onDeleteButton} propElement={eachData.id} className="d-btn" />
+              </li>
+            ))}
+          </ol>
         </div>)}
         {status === "false" && (<div className='select-input-box'>
           <select name="cars" id="cars" form="carform" value={firstNbr} onChange={(e) => setfirstNbr(e.target.value)} className="select-btn">
@@ -279,8 +284,8 @@ const Home = () => {
               <option value={nbr.id} key={nbr.id}>{nbr.name}</option>
             ))}
           </select>
-          <button onClick={ClickButton} className="click-btn">Calculate<BsFillArrowRightCircleFill /></button>
-        </div> ) }
+          <button onClick={ClickButton} type='button' className="click-btn">Calculate<BsFillArrowRightCircleFill /></button>
+        </div>)}
       </div>
     </div>
   )

@@ -5,8 +5,6 @@ import './index.css'
 const Account = () => {
     const [studentData, setStudentData] = useState([])
     const [password, setPassword] = useState('')
-    
-   
     const getStudentData = async () => {
         const id = localStorage.getItem("id")
         const url = `https://registrationapi-z2hj.onrender.com`
@@ -17,14 +15,12 @@ const Account = () => {
                 accept: 'application/json',
             },
         }
-
         const response = await fetch(url, option)
         const data = await response.json()
         console.log(response,'student')
         const hide = "*".repeat(data[0].password.length)
         setPassword(hide)
         setStudentData(data)
-
     }
     const getMasterData = async () => {
         const id = localStorage.getItem("id")
@@ -36,7 +32,6 @@ const Account = () => {
                 accept: 'application/json',
             },
         }
-
         const response = await fetch(url, option)
         const data = await response.json()
         setStudentData(data)
@@ -62,12 +57,8 @@ const Account = () => {
                         <p className='para'>Contact-: {each.email} </p>
                     </li>
                 ))}
-
             </ol>
-
         </div>
-
-
     </div>
     )
 }

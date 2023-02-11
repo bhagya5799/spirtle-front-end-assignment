@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import './index.css'
 
-
 const Register = (props) => {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
@@ -13,8 +12,6 @@ const Register = (props) => {
   const { params } = match
   const { status } = params
   const studentOrMaster = status === 'true' ? "Master" : "Student"
-
-
 
   const submitForm = async (event) => {
     event.preventDefault()
@@ -48,7 +45,6 @@ const Register = (props) => {
     }
   }
   
-
   return (
     <div className='Register-form-container'>
       <form autoComplete="off" onSubmit={submitForm} className="r-form">

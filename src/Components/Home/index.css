@@ -1,5 +1,4 @@
 .home-container {
-
 }
 .input-output-container {
   padding: 20px;
@@ -7,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 80%; 
+  height: 80%;
 }
 
 .result-container {
@@ -45,18 +44,17 @@
   background-color: rgb(169, 166, 234);
 }
 .questions {
- margin-top: 50px;
+  margin-top: 50px;
+  position: relative;
 }
 .li-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   height: 5rem;
   border: 1px solid rgb(255, 249, 249);
   width: 100%;
   margin-bottom: 30px;
-  box-shadow: rgba(21, 21, 229, 0.25) 0px 50px 100px -20px,
-    rgba(207, 201, 201, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 10px;
   align-items: center;
   border-radius: 10px;
@@ -67,23 +65,25 @@
 
 .box {
   width: 40%;
-
 }
-.heading{
-    color: rgb(216, 35, 74);
-    font-size: 18px;
-    
+.heading {
+  color: rgb(216, 35, 74);
+  font-size: 18px;
 }
-.master-name{
-    color: rgb(76, 30, 203);
-    font-weight: bold;
-    font-style: italic;
-    font-family: cursive;
-    font-size: 12px;
+.master-name {
+  color: rgb(76, 30, 203);
+  font-weight: bold;
+  font-style: italic;
+  font-family: cursive;
+  font-size: 12px;
 }
-.header{
+.header {
   position: fixed;
   top: 0;
   width: 100%;
   margin-bottom: 20px;
+}
+.d-btn {
+  padding-top: 20px;
+ 
 }

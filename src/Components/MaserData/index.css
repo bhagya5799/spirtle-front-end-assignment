@@ -2,9 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
   gap: 20px;
-  background-color: rgb(56, 53, 53);
 }
 .account-sub-container {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,

@@ -31,7 +31,7 @@ const Account = () => {
     }
     const getMasterData = async () => {
         const id = localStorage.getItem("id")
-        const url = `https://registrationapi-z2hj.onrender.com/get-full-data${id}`
+        const url = `https://registrationapi-z2hj.onrender.com/get-full-data/${id}`
         const option = {
             method: "GET",
             headers: {
@@ -44,7 +44,7 @@ const Account = () => {
         const data = await response.json()
         const hide = "*".repeat(data[0].password.length)
         setPassword(hide)
-        setUserData(data)
+        setUserData(data[0])
     }
     const status = localStorage.getItem("status")
     const StudentOrMaster = status === 'true' ? 'Master' : 'Student'
@@ -61,11 +61,7 @@ const Account = () => {
                     <p className='para-x'>Password-: {password}</p>
                 </li>
             </ol>
-
-        </div>
-        
-        
-        
+        </div>      
     </div>
     )
 }

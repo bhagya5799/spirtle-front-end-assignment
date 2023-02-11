@@ -1,8 +1,6 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-
 import './index.css'
 
 const Login = (props) => {
@@ -11,10 +9,9 @@ const Login = (props) => {
     const [userPass, setPassword] = useState('')
     const [errorMessage, setErrMessage] = useState('')
     const [ToggleData, localData] = useState(true)
-    const [toggle, setToggle] = useState(true)
-
 
     const submitForm = async (e) => {
+        console.log('ok')
         e.preventDefault()
         const userApi = 'https://registrationapi-z2hj.onrender.com/login'
         const masterApi = 'https://registrationapi-z2hj.onrender.com/adminLogin'
@@ -47,85 +44,51 @@ const Login = (props) => {
         }
 
     }
-
-    const clickUseBtn = () => {
-        setToggle(false)
-        localData(true)
-
-    }
-    const clickAdminBtn = () => {
-        setToggle(false)
+    const clickMaster = () => {
         localData(false)
-
     }
+    
+    const clickStudent = () => {
+        localData(true)
+    }
+
     const getId = localStorage.getItem("id")
     if (getId !== null) {
         return <Redirect to="/" />
     }
-
+    
     return (
-        // <div className='login-container'>
-        //     {toggle ? (<div className='choose-master-student'>
-        //         <div className='Page-container'>
-        //             <form autoComplete="off" onSubmit={submitForm}>
-        //                 <h4 className='loginPage-title'>{ToggleData ? 'User Login' : 'Admin Login'}</h4>
-        //                 <label htmlFor='email'>Email</label>
-        //                 <div className='input-card'>
-        //                     <input id='email' type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-        //                     <p className='icons' ></p>
-        //                 </div>&nbsp; <br /> <br />
-        //                 <label htmlFor='Mailpassword'>password</label>
-        //                 <div className='input-card'>
-        //                     <input id='Mailpassword' type="password" value={userPass} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
-        //                     <p className='icons'></p>
-        //                 </div>&nbsp; <br /> <br />
-        //                 {/* <button type='submit' className='login-btn'>Login</button> */}
-        //                 <p className='error-message'>{errorMessage}</p>
-        //                 <button onClick={clickUseBtn} className="user">User Login</button>
-        //                 <button onClick={clickAdminBtn} className="user">Admin Login</button>
-        //                 <Link to='/' >
-        //                     <p>Don't have Account </p>
-        //                 </Link>
-        //             </form>
-        //         </div>
-             
-        //     </div>)
-        //         : (
-        //             <div className='Page-container'>
-        //                 <form autoComplete="off" onSubmit={submitForm}>
-        //                     <h4 className='loginPage-title'>{ToggleData ? 'User Login' : 'Admin Login'}</h4>
-        //                     <label htmlFor='email'>Email</label>
-        //                     <div className='input-card'>
-        //                         <input id='email' type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-        //                         <p className='icons' ></p>
-        //                     </div>&nbsp; <br /> <br />
-        //                     <label htmlFor='Mailpassword'>password</label>
-        //                     <div className='input-card'>
-        //                         <input id='Mailpassword' type="password" value={userPass} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
-        //                         <p className='icons'></p>
-        //                     </div>&nbsp; <br /> <br />
-
-        //                     <button type='submit' className='login-btn'>Login</button>
-        //                     <p className='error-message'>{errorMessage}</p>
-        //                     <Link to='/' >
-        //                         <p>Don't have Account </p>
-        //                     </Link>
-        //                 </form>
-        //             </div>
-        //         )
-        //     }
-
-        // </div>
         <div className='login-container'>
-            {toggle ? (<div className='choose-master-student'>
-                <h3 className='wellcome'>Well come Login page</h3>
-                <button onClick={clickUseBtn} className="user">User Login</button>
-                <button onClick={clickAdminBtn} className="user">Admin Login</button>
+            {ToggleData ? (<div className='choose-master-student'>
+                <div className='Page-container'>
+                    <form autoComplete="off" onSubmit={submitForm}>
+                        <h4 className='loginPage-title'>{ToggleData ? 'User Login' : 'Admin Login'}</h4>
+                        <label htmlFor='email'>Email</label>
+                        <div className='input-card'>
+                            <input id='email' type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+                            <p className='icons' ></p>
+                        </div>&nbsp; <br /> <br />
+                        <label htmlFor='Mailpassword'>password</label>
+                        <div className='input-card'>
+                            <input id='Mailpassword' type="password" value={userPass} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
+                            <p className='icons'></p>
+                        </div>&nbsp; <br /> <br />
+                        <button type='submit' className='login-btn'>Login</button>
+                        <p className='error-message'>{errorMessage}</p>
+                        <Link to={`register/${ToggleData}`} >
+                            <p>Don't have Account </p>
+                        </Link>
+                        <Link>
+                            <p onClick={clickMaster}>Not a Student? Login as a Master</p>
+                        </Link>
+                    </form>
+                </div>
+             
             </div>)
                 : (
                     <div className='Page-container'>
                         <form autoComplete="off" onSubmit={submitForm}>
-                            <h4 className='loginPage-title'>{ToggleData ? 'User Login' : 'Admin Login' }</h4>
+                            <h4 className='loginPage-title'>{ToggleData ? 'User Login' : 'Admin Login'}</h4>
                             <label htmlFor='email'>Email</label>
                             <div className='input-card'>
                                 <input id='email' type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
@@ -139,14 +102,16 @@ const Login = (props) => {
 
                             <button type='submit' className='login-btn'>Login</button>
                             <p className='error-message'>{errorMessage}</p>
-                            <Link to='/' >
+                            <Link to={`register/${ToggleData}`} >
                                 <p>Don't have Account </p>
+                            </Link>
+                            <Link>
+                                <p onClick={clickStudent}>Not a master?Login as a Student</p>
                             </Link>
                         </form>
                     </div>
                 )
             }
-
         </div>
     )
 }
